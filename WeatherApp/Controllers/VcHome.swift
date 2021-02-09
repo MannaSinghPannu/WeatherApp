@@ -28,13 +28,16 @@ class VcHome: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initLogOut()
         self.title=AppCons.APP_NAME
         view.backgroundColor = .systemBackground
+        let welComeTxt="Welcome "
+        let uName=AppCons.userDefaults?.value(forKey: AppCons.FB_UNAME_KEY) as? String
+        txtLocation.text=welComeTxt + (uName ?? "")
         mSearchField.delegate = self
         mTableView.delegate = self
         mTableView.dataSource=self
         mTableView.allowsSelection = false
+        initLogOut()
         // core data -->>
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         context = appDelegate!.persistentContainer.viewContext
@@ -46,8 +49,7 @@ class VcHome: UIViewController {
         //request.returnsObjectsAsFaults = false
         let predicate = NSPredicate(format: "fb_user_id = %@",AppCons.FB_UID )
         request.predicate = predicate
-        NSLog("AppCons.FB_ID %@", AppCons.FB_UID)
-        NSLog("AppCons.ATB_FB_UID %@", AppDB.ATB_FB_UID)
+       
         do {
             let result = try context?.fetch(request)
             //let result = try context?.execute(request)

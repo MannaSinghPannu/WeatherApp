@@ -21,6 +21,7 @@ public class AppCons{
     public static let BASE_URL="http://api.openweathermap.org/data/2.5/weather?zip="
     public static let APP_ID_WEATHER="e44bc5c98c4357772a633f0ef6a10c96"
     public static let FB_UID_KEY="FB_UID_KEY"
+    public static let FB_UNAME_KEY="FB_UNAME_KEY"
     
     public static var FB_ACCESS_TOKEN_KEY="FB_ACCESS_TOKEN_KEY"
     public static var FB_URL_SESSION:ASWebAuthenticationSession?

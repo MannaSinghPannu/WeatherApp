@@ -138,13 +138,15 @@ class VcLogin: UIViewController {
                 print(responseModel.id ?? "id N/A")
                 
                 AppCons.FB_EMAIL=responseModel.email ?? "FB email N/A"
-                AppCons.FB_NAME=responseModel.name ?? "FB User"
+                AppCons.FB_NAME=responseModel.name ?? "Facebook User"
                 AppCons.FB_UID=responseModel.id ?? "N/A"
                 DispatchQueue.main.async{
                     if(AppCons.FB_UID == "N/A"){
                         self.showToast(view: self.view, message: AppCons.FB_ACCESS_DENIED)
                     }else{
                         AppCons.userDefaults?.setValue(AppCons.FB_UID, forKey: AppCons.FB_UID_KEY)
+                        AppCons.userDefaults?.setValue(AppCons.FB_NAME, forKey: AppCons.FB_UNAME_KEY)
+
                         AppCons.userDefaults?.setValue(AppCons.FB_ACCESS_TOKEN, forKey: AppCons.FB_ACCESS_TOKEN_KEY)
                         self.Home()
                     }
